@@ -2,7 +2,7 @@ import { Outlet, useParams } from 'react-router-dom';
 import { getMovieById } from '../../services/Api';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {Cast} from "./Cast/Cast"
+
 
 export const MovieDetails = () => {
   const [movie, setMovie] = useState({});
