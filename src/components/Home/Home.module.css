@@ -1,0 +1,14 @@
+.homeLink {
+    list-style: none;
+    text-decoration: none;
+    color: rgb(53, 51, 51);
+    font-size: medium;
+    font-weight: 400;
+    margin-left: 15px;
+    line-height: 1;
+  }
+  
+  .homeList {
+    margin-left: 15px;
+  }
+  

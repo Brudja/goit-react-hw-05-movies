@@ -1,13 +1,29 @@
-import axios from "axios";
+import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { getTrending } from 'services/Api';
+import css from './Home.module.css';
 
-const baseApi = async (url="")=>{
-    const {data} = await axios.get(url);
-    console.log('data', data)
-    return data;
-}
-const BASE_URL = "https://api.themoviedb.org/3";
-const APE_KEY = "087b3a8cac1b0930cef8c04cbd521bfb";
+export const Home = () => {
+  const [movie, setMovie] = useState(null);
 
-export function getTrending () {
-    return  baseApi(`${BASE_URL}/trending/movie/day?api_key=${APE_KEY}`)
-}
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getTrending();
+      setMovie(data.results);
+    };
+    getData();
+  }, []);
+  return (
+    <>
+      <ul className={css.homeList}>
+        {movie?.map(item => (
+          <li key={item.id}>
+            <NavLink to={`/movies/${item.id}`} className={css.homeLink}>
+              {item.original_title}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+};
