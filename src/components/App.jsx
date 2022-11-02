@@ -6,11 +6,11 @@ import { Header } from './Header/Header';
 // import { MovieDetails } from './MovieDetails/MovieDetails';
 // import {Cast} from "./MovieDetails/Cast/Cast"
 // import {Reviews} from "./MovieDetails/Reviews/Reviews"
-const Home = lazy(()=>import("./Home/Home"));
-const Movies = lazy(()=>import("./Movies/Movies"));
-const MovieDetails = lazy(()=>import("./MovieDetails/MovieDetails"));
-const Cast = lazy(()=>import("./MovieDetails/Cast/Cast"));
-const Reviews = lazy(()=>import("./MovieDetails/Reviews/Reviews"));
+const Home = lazy(()=>import("../pages/Home/Home"));
+const Movies = lazy(()=>import("../pages/Movies/Movies"));
+const MovieDetails = lazy(()=>import("../pages/MovieDetails/MovieDetails"));
+const Cast = lazy(()=>import("../pages/MovieDetails/Cast/Cast"));
+const Reviews = lazy(()=>import("../pages/MovieDetails/Reviews/Reviews"));
 
 export const App = () => {
   return (
