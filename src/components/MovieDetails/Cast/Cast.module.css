@@ -1,0 +1,20 @@
+.text{
+    margin: 0;
+    padding: 0;
+   text-align: center;
+   width: 60px;
+    }
+   .item{
+       list-style: none;
+       
+   }
+   .item:not(:last-child) {
+       margin-bottom: 25px;
+   
+   }
+   .list{
+       display: grid;
+       /* flex-wrap: wrap;
+       margin-right: 20px; */
+   }
+   

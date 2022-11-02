@@ -29,3 +29,6 @@ export function getCastById(id){
 // export const searchApi = async params => {
 //     return baseApi(`${BASE_URL}/search/movie/?api_key=${APE_KEY}&query=${params}&page=1`);
 //   };
+export function getReviewApi(id){
+  return baseApi(`${BASE_URL}/movie/${id}/reviews?api_key=${APE_KEY}`)
+}

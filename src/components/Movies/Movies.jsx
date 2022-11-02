@@ -1,16 +1,18 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { getMovie } from 'services/Api';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import css from './Movies.module.css';
 
 
-export function Movies() {
-  const [searchParams, setSearchParams] = useSearchParams();
+function Movies() {
   const [movie, setMovie] = useState(null);
-  const [query, setQuery] = useState(null);
-  const [searchValue, setSearchValue] = useState('');
+  const [params, setParams] = useSearchParams();
+  let query = params.get("query") || ""
+  const [searchValue, setSearchValue] = useState(query);
+  const location = useLocation()
 
+  
   useEffect(() => {
     if (!query) return;
     const getData = async () => {
@@ -26,25 +28,20 @@ export function Movies() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    getFormData(searchValue);
-    setSearchParams({query:searchValue})
-  };
-
-  const getFormData = data => {
-    setQuery(data);
+    setParams({query:searchValue});
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input onChange={handleChange} />
+        <input value={searchValue} onChange={handleChange} />
         <button type="submit">Search</button>
       </form>
       {movie && (
         <ul>
           {movie?.map(item => (
             <li key={item.id} >
-              <Link to={`${item.id}`} className={css.movieLink} id={item.id}>
+              <Link to={`${item.id}`} state={{from:location}} className={css.movieLink} id={item.id}>
                 {item.original_title}
               </Link>
             </li>
@@ -54,3 +51,9 @@ export function Movies() {
     </>
   );
 }
+
+
+
+export default Movies
+
+ // const search = searchParams.get("search")??""
